@@ -19,7 +19,7 @@ public class Client {
 
         this.client = new BedrockClient(bindAddress);
         this.client.bind().whenComplete((client, throwable) -> {
-           this.pingRemoteServer(new InetSocketAddress("play.nethergames.org", 19132));
+            this.pingRemoteServer(new InetSocketAddress("play.nethergames.org", 19132));
         }).join();
     }
 

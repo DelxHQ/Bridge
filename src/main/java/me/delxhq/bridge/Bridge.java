@@ -1,20 +1,23 @@
 package me.delxhq.bridge;
 
-public class Bridge {
+import net.fabricmc.api.ModInitializer;
 
-    private final Client client;
-    private final Server server;
+public class Bridge implements ModInitializer {
 
-    public Bridge() {
-        this.client = new Client(this);
-        this.server = new Server(this);
-    }
+	private Client client;
+	private Server server;
 
-    public Client getClient() {
-        return client;
-    }
+	@Override
+	public void onInitialize() {
+		this.client = new Client(this);
+		this.server = new Server(this);
+	}
 
-    public Server getServer() {
-        return server;
-    }
+	public Client getClient() {
+		return client;
+	}
+
+	public Server getServer() {
+		return server;
+	}
 }
