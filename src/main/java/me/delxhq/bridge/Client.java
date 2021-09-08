@@ -1,6 +1,8 @@
 package me.delxhq.bridge;
 
 import com.nukkitx.protocol.bedrock.BedrockClient;
+import com.nukkitx.protocol.bedrock.BedrockPacket;
+import com.nukkitx.protocol.bedrock.BedrockSession;
 
 import java.net.InetSocketAddress;
 
@@ -30,6 +32,18 @@ public class Client {
             this.players = bedrockPong.getPlayerCount();
             this.maxPlayers = bedrockPong.getMaximumPlayerCount();
         }).join();
+    }
+
+    public void sendPacketImmediately(BedrockPacket packet) {
+        BedrockSession session = this.client.getSession();
+
+        session.sendPacketImmediately(packet);
+    }
+
+    public void sendPacket(BedrockPacket packet) {
+        BedrockSession session = this.client.getSession();
+
+        session.sendPacket(packet);
     }
 
     public String getMotd() {
