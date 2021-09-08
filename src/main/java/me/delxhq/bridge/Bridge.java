@@ -2,11 +2,19 @@ package me.delxhq.bridge;
 
 public class Bridge {
 
-    public final Client client;
-    public final Server server;
+    private final Client client;
+    private final Server server;
 
     public Bridge() {
-        this.client = new Client();
-        this.server = new Server();
+        this.client = new Client(this);
+        this.server = new Server(this);
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public Server getServer() {
+        return server;
     }
 }

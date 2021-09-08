@@ -20,7 +20,7 @@ public class Server {
     private static final String HOST = "0.0.0.0";
     private static final int PORT = 25565;
 
-    public Server() {
+    public Server(Bridge bridge) {
         SessionService sessionService = new SessionService();
         sessionService.setProxy(Proxy.NO_PROXY);
 
@@ -31,8 +31,8 @@ public class Server {
         this.server.setGlobalFlag(MinecraftConstants.SERVER_INFO_BUILDER_KEY, (ServerInfoBuilder) session ->
                 new ServerStatusInfo(
                         new VersionInfo(MinecraftConstants.GAME_VERSION, MinecraftConstants.PROTOCOL_VERSION),
-                        new PlayerInfo(100, 0, new GameProfile[0]),
-                        Component.text("§eA Bridge Server"),
+                        new PlayerInfo(bridge.getClient().getMaxPlayers(), bridge.getClient().getPlayers(), new GameProfile[0]),
+                        Component.text(bridge.getClient().getMotd()),
                         null
                 )
         );

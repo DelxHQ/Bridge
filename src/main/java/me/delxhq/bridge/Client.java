@@ -8,11 +8,17 @@ public class Client {
 
     public BedrockClient client;
 
-    public Client() {
+    private String motd;
+    private int players;
+    private int maxPlayers;
+
+    public Client(Bridge bridge) {
         InetSocketAddress bindAddress = new InetSocketAddress("0.0.0.0", 56437);
 
         this.client = new BedrockClient(bindAddress);
-        this.client.bind().join();
+        this.client.bind().whenComplete((client, throwable) -> {
+           this.pingRemoteServer(new InetSocketAddress("play.nethergames.org", 19132));
+        }).join();
     }
 
     public void pingRemoteServer(InetSocketAddress address) {
@@ -20,7 +26,21 @@ public class Client {
             if (throwable != null) {
                 return;
             }
-            System.out.println(bedrockPong.getMotd());
+            this.motd = bedrockPong.getMotd();
+            this.players = bedrockPong.getPlayerCount();
+            this.maxPlayers = bedrockPong.getMaximumPlayerCount();
         }).join();
+    }
+
+    public String getMotd() {
+        return motd;
+    }
+
+    public int getPlayers() {
+        return players;
+    }
+
+    public int getMaxPlayers() {
+        return maxPlayers;
     }
 }
