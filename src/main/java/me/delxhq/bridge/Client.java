@@ -3,6 +3,7 @@ package me.delxhq.bridge;
 import com.nukkitx.protocol.bedrock.BedrockClient;
 import com.nukkitx.protocol.bedrock.BedrockPacket;
 import com.nukkitx.protocol.bedrock.BedrockSession;
+import net.minecraft.client.util.NetworkUtils;
 
 import java.net.InetSocketAddress;
 
@@ -15,11 +16,11 @@ public class Client {
     private int maxPlayers;
 
     public Client(Bridge bridge) {
-        InetSocketAddress bindAddress = new InetSocketAddress("0.0.0.0", 56437);
+        InetSocketAddress bindAddress = new InetSocketAddress("0.0.0.0", NetworkUtils.findLocalPort());
 
         this.client = new BedrockClient(bindAddress);
         this.client.bind().whenComplete((client, throwable) -> {
-            this.pingRemoteServer(new InetSocketAddress("play.nethergames.org", 19132));
+//            this.pingRemoteServer(new InetSocketAddress("play.nethergames.org", 19132));
         }).join();
     }
 

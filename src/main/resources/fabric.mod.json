@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "bridge",
   "version": "${version}",
 
   "name": "Bridge",
