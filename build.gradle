@@ -1,6 +1,8 @@
 plugins {
 	id 'fabric-loom' version '0.9-SNAPSHOT'
 	id 'maven-publish'
+	id 'com.github.johnrengelman.shadow' version '7.0.0'
+
 }
 
 sourceCompatibility = JavaVersion.VERSION_16
@@ -31,6 +33,12 @@ dependencies {
 
 	implementation 'com.github.Steveice10:MCProtocolLib:1.17.1-1'
 	implementation 'com.nukkitx.protocol:bedrock-v448:2.9.0-SNAPSHOT'
+}
+
+shadowJar {
+	manifest {
+		attributes 'Main-Class': 'me.delxhq.bridge.Bridge'
+	}
 }
 
 processResources {
