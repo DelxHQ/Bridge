@@ -35,12 +35,6 @@ dependencies {
 	implementation 'com.nukkitx.protocol:bedrock-v448:2.9.0-SNAPSHOT'
 }
 
-shadowJar {
-	manifest {
-		attributes 'Main-Class': 'me.delxhq.bridge.Bridge'
-	}
-}
-
 processResources {
 	inputs.property "version", project.version
 
