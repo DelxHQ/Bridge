@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '0.9-SNAPSHOT'
+	id 'fabric-loom' version '0.11-SNAPSHOT'
 	id 'maven-publish'
 	id 'com.github.johnrengelman.shadow' version '7.0.0'
 
@@ -32,7 +32,7 @@ dependencies {
 	// You may need to force-disable transitiveness on them.
 
 	implementation 'com.github.Steveice10:MCProtocolLib:1.17.1-1'
-	implementation 'com.nukkitx.protocol:bedrock-v448:2.9.0-SNAPSHOT'
+	implementation 'com.nukkitx.protocol:bedrock-v475:2.9.5-SNAPSHOT'
 }
 
 processResources {
