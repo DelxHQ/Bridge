@@ -1,8 +1,6 @@
 plugins {
 	id 'fabric-loom' version '0.11-SNAPSHOT'
 	id 'maven-publish'
-	id 'com.github.johnrengelman.shadow' version '7.0.0'
-
 }
 
 sourceCompatibility = JavaVersion.VERSION_17
@@ -30,8 +28,6 @@ dependencies {
 
 	// PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
 	// You may need to force-disable transitiveness on them.
-
-	implementation 'com.github.Steveice10:MCProtocolLib:1.17.1-1'
 	implementation 'com.nukkitx.protocol:bedrock-v475:2.9.5-SNAPSHOT'
 }
 
@@ -50,8 +46,8 @@ tasks.withType(JavaCompile).configureEach {
 	// If Javadoc is generated, this must be specified in that task too.
 	it.options.encoding = "UTF-8"
 
-	// Minecraft 1.17 (21w19a) upwards uses Java 16.
-	it.options.release = 16
+	// Minecraft 1.18 upwards uses Java 16.
+	it.options.release = 17
 }
 
 java {
